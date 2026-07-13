@@ -42,6 +42,12 @@ export function PlayerCard({
       )}
       style={{ borderLeftColor: teamColor }}
     >
+      {/* ponytail: plain img, not next/image — no remote/loader config needed for static /public files */}
+      <img
+        src={`/assets/${player.role === 'mason' ? 'Masons' : player.role}.webp`}
+        alt={player.role}
+        className="w-20 h-27 rounded-md object-cover shrink-0 bg-surface-low"
+      />
       <div className="flex-grow min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
           <span

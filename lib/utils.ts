@@ -19,3 +19,11 @@ export const TEAM_BADGE_VARIANT: Record<Team, 'village' | 'werewolf' | 'neutral'
   neutral: 'neutral',
   special: 'special',
 }
+
+// ponytail: special-case mason (filename is "Masons.webp", capital + plural);
+// every other engine role key matches its lowercase filename. Add a manifest
+// here only if more case-mismatched roles land.
+export const roleImg = (r: string): string =>
+  r === 'mason'
+    ? '/assets/Masons.webp'
+    : `/assets/${r.replace(/\s+/g, '-').toLowerCase()}.webp`

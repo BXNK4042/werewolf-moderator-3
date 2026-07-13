@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# upscayl intermediates (4x PNG masters + original backup)
+/assets-upscayl/
+/public/assets.orig/
