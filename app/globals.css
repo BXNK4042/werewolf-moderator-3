@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
+/* ponytail: dark mode removed — Stitch "Paper & Ink" is light-only by design */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Stitch "Paper & Ink" surface system */
+  --surface: #fdf8f8;
+  --surface-dim: #ddd9d8;
+  --surface-bright: #fdf8f8;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f7f3f2;
+  --surface-container: #f1edec;
+  --surface-container-high: #ebe7e6;
+  --surface-container-highest: #e5e2e1;
+
+  --on-surface: #1c1b1b;
+  --on-surface-variant: #444748;
+  --inverse-surface: #313030;
+  --inverse-on-surface: #f4f0ef;
+
+  --outline: #747878;
+  --outline-variant: #c4c7c7;
+  --surface-tint: #5f5e5e;
+
+  --primary: #000000;
+  --on-primary: #ffffff;
+  --primary-container: #1c1b1b;
+  --on-primary-container: #858383;
+  --inverse-primary: #c9c6c5;
+
+  --secondary: #5d5f5f;
+  --on-secondary: #ffffff;
+  --secondary-container: #dddddd;
+  --on-secondary-container: #606161;
+
+  --tertiary: #000000;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #1d1b1a;
+  --on-tertiary-container: #868381;
+
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+
+  --accent-blue: #4a6fa5;
+
+  /* Team dots */
+  --team-village: #10b981;
+  --team-werewolf: #ef4444;
+  --team-neutral: #94a3b8;
+  --team-special: #8b5cf6;
+
+  /* shadcn semantic mapping */
+  --background: var(--surface);
+  --foreground: var(--on-surface);
+  --card: var(--surface-container-lowest);
+  --card-foreground: var(--on-surface);
+  --popover: var(--surface-container-lowest);
+  --popover-foreground: var(--on-surface);
+  --primary-foreground: var(--on-primary);
+  --secondary-foreground: var(--on-secondary);
+  --muted: var(--surface-container);
+  --muted-foreground: var(--secondary);
+  --accent: var(--surface-container-low);
+  --accent-foreground: var(--on-surface);
+  --destructive: var(--error);
+  --destructive-foreground: var(--on-error);
+  --border: var(--outline-variant);
+  --input: var(--outline-variant);
+  --ring: var(--primary);
+
+  --radius: 0.5rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Stitch surfaces as utilities */
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-lowest: var(--surface-container-lowest);
+  --color-surface-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-high: var(--surface-container-high);
+  --color-surface-highest: var(--surface-container-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-accent-blue: var(--accent-blue);
+  --color-team-village: var(--team-village);
+  --color-team-werewolf: var(--team-werewolf);
+  --color-team-neutral: var(--team-neutral);
+  --color-team-special: var(--team-special);
+
+  --spacing-touch: 48px;
+  --spacing-page: 24px;
+  --spacing-element: 12px;
+  --spacing-section: 32px;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface-container-highest); border-radius: 10px; }
