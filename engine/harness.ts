@@ -71,22 +71,22 @@ async function demoWolfParity(): Promise<void> {
     ['werewolf', 'werewolf', 'villager', 'villager', 'villager'],
   )
   const prompt = scriptPrompt([
-    ['p2'],   // n1: wolves kill Carol → 2 wolves vs 2 others
-    [],       // d1: skip vote → checkWin triggers wolf win at parity
+    ['p2'],   // n1: wolves kill Carol → 2 wolves vs 2 others → checkWin ends game at end of night
   ])
   await startGame(g, prompt)
   await runGame(g, prompt)
   assert.strictEqual(g.winner!.team, 'werewolf')
   assert.deepStrictEqual(g.winner!.playerIds, ['p0', 'p1'])
+  assert.strictEqual(g.phase, 'ended', 'game must end at end of night, no day vote')
 }
 
 async function demoTanner(): Promise<void> {
   const g = setupGame(
     ['Alice', 'Bob', 'Carol', 'Dan', 'Eve'],
-    ['tanner', 'villager', 'villager', 'werewolf', 'werewolf'],
+    ['tanner', 'villager', 'villager', 'villager', 'werewolf'],
   )
   const prompt = scriptPrompt([
-    ['p1'],   // n1: wolves kill Bob
+    ['p1'],   // n1: wolf kills Bob → 1 wolf vs 3 others (no parity, game continues)
     ['p0'],   // d1: village votes Alice (tanner) → tanner wins alone
   ])
   await startGame(g, prompt)

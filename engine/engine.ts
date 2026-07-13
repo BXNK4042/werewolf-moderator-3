@@ -69,7 +69,8 @@ export async function resolveNight(g: Game, prompt: PromptFn): Promise<void> {
 
   for (const p of g.players) p.modifiers = p.modifiers.filter(m => m.type !== 'protected')
   g.nightKills = []
-  g.phase = 'day'
+  checkWin(g)
+  g.phase = g.winner ? 'ended' : 'day'
 }
 
 export async function resolveDay(g: Game, prompt: PromptFn): Promise<void> {
